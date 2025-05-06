@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y curl && \
     curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Add uv-created virtual environment to PATH
-ENV PATH="/app/.venv/bin:$PATH"
+ENV PATH="/root/.local/bin:/app/.venv/bin:$PATH"
 
 # Copy project files
 COPY . .
