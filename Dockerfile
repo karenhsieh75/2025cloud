@@ -2,15 +2,18 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# install curl, uv
+# Install curl and uv
 RUN apt-get update && apt-get install -y curl && \
     curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# copy project
+# Add uv-created virtual environment to PATH
+ENV PATH="/app/.venv/bin:$PATH"
+
+# Copy project files
 COPY . .
 
-# install dependencies
-RUN ~/.cargo/bin/uv sync
+# Install dependencies into .venv
+RUN uv sync
 
-# run app
-CMD ["~/.cargo/bin/uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Start the FastAPI app
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
