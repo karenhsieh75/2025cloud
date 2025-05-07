@@ -25,5 +25,5 @@ jobs:
         with:
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/2025cloud:latest
-            ${{ secrets.DOCKER_USERNAME }}/2025cloud:${{ github.sha }}
+            karenhsieh75/2025cloud:latest
+            karenhsieh75/2025cloud:${{ github.sha }}
