@@ -13,7 +13,7 @@ ENV PATH="/root/.local/bin:/app/.venv/bin:$PATH"
 COPY . .
 
 # Install dependencies into .venv
-RUN uv sync
+RUN uv syn
 
 # Start the FastAPI app
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
